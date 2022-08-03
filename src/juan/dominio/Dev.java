@@ -1,5 +1,6 @@
 package juan.dominio;
 
+import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Optional;
@@ -41,7 +42,7 @@ public class Dev {
 	 */
 	public void inscreverBootcamp(Bootcamp bootcamp) {
 		try {
-			bootcamp.adicionarDev(this);
+			bootcamp.adicionarDev(this, LocalDate.now());
 			
 		} catch(BootcampNotAvaliableException e) {
 			System.out.println("Não foi possível realizar a inscrição: "+ e.getMessage());
@@ -73,6 +74,31 @@ public class Dev {
 				.reduce(0d, (x,y) -> x+y);
 		
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Set<Conteudo> getConteudosInscritos() {
+		return conteudosInscritos;
+	}
+
+	public void setConteudosInscritos(Set<Conteudo> conteudosInscritos) {
+		this.conteudosInscritos = conteudosInscritos;
+	}
+
+	public Set<Conteudo> getConteudosConcluidos() {
+		return conteudosConcluidos;
+	}
+
+	public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
+		this.conteudosConcluidos = conteudosConcluidos;
+	}
+	
 	
 	
 	
