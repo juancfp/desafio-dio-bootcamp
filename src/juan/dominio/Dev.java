@@ -67,11 +67,11 @@ public class Dev {
 	 * Calcula o total de XP do dev na plataforma.
 	 */
 	public double calcularTotalXP() {
-		double somaXP = 0;
-		conteudosConcluidos.stream().forEach(conteudo -> {
-			somaXP += conteudo.calcularXP();
-		});
-		return somaXP;
+		return conteudosConcluidos
+				.stream()
+				.map(Conteudo::calcularXP)
+				.reduce(0d, (x,y) -> x+y);
+		
 	}
 	
 	
